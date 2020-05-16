@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'movie-recommendations';
+
+  showConfig = true;
+
+  toggleConfig() { this.showConfig = !this.showConfig; }
+
 }

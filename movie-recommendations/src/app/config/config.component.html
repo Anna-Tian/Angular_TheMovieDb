@@ -1,0 +1,21 @@
+<h3>Get configuration from JSON file</h3>
+<div>
+  <button (click)="clear(); showConfig()">get</button>
+  <button (click)="clear(); showConfigResponse()">getResponse</button>
+  <button (click)="clear()">clear</button>
+  <button (click)="clear(); makeError()">error</button>
+  <span *ngIf="config">
+    <!-- <p>The Movie Database API URL is "{{config.homepage}}"</p>
+    <p>Textfile URL is "{{config.original_title}}"</p> -->
+    <p>total_results is "{{config.total_results}}"</p>
+    <p>total_pages is "{{config.total_pages}}"</p>
+    <p>page is "{{config.page}}"</p>
+    <div *ngIf="headers">
+      Response headers:
+      <ul>
+        <li *ngFor="let header of headers">{{header}}</li>
+      </ul>
+    </div>
+  </span>
+</div>
+<p *ngIf="error" class="error">{{error | json}}</p>
