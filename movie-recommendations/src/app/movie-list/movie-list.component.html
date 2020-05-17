@@ -1,15 +1,10 @@
 <h2>Movie Lists Component</h2>
 
-<mat-grid-list cols="4">
-  <mat-grid-tile
-    *ngFor="let movie of movies"
-    [colspan]="1"
-    [rowspan]="2">
+<div class="section">
 
-    <mat-card class="card">
-      <img src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
-      <mat-card-title>{{movie.title}}</mat-card-title>
-      <mat-card-content>{{movie.overview}}</mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+  <mat-card class="card" *ngFor="let movie of movies">
+    <img mat-card-image src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
+    <mat-card-title class="cardTitle">{{movie.title}}</mat-card-title>
+    <mat-card-content class= "cardContent">{{movie.overview}}</mat-card-content>
+  </mat-card>
+</div>

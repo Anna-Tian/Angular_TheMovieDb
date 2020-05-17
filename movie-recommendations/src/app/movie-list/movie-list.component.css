@@ -1,3 +1,25 @@
+.section {
+  margin: auto;
+  width: 90%;
+}
 .card {
-  width: 80%;
+  width: 20%;
+  float: left;
+  margin: 10px;
+}
+.cardContent {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cardTitle {
+  font-size: 20px;
+  min-height: 50px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
