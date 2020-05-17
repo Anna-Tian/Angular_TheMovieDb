@@ -1,10 +1,10 @@
 <h2>Movie Lists Component</h2>
 
 <div class="section">
-
-  <mat-card class="card" *ngFor="let movie of movies">
+  <mat-card class="card" *ngFor="let movie of movies | paginate: paginationConfig">
     <img mat-card-image src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
     <mat-card-title class="cardTitle">{{movie.title}}</mat-card-title>
     <mat-card-content class= "cardContent">{{movie.overview}}</mat-card-content>
   </mat-card>
+  <pagination-controls (pageChange)="paginationConfig.currentPage = $event" class="pagination"></pagination-controls>
 </div>

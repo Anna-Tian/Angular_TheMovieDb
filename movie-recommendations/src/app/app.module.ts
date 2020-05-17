@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import {DemoMaterialModule} from './material-module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import {DemoMaterialModule} from './material-module';
       BrowserModule,
       AppRoutingModule,
       DemoMaterialModule,
-      HttpClientModule
+      HttpClientModule,
+      NgxPaginationModule,
+      FormsModule
    ],
    providers: [],
    bootstrap: [

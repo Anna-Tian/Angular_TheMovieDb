@@ -4,7 +4,7 @@
 }
 .card {
   width: 20%;
-  float: left;
+  display: inline-block;
   margin: 10px;
 }
 .cardContent {
@@ -22,4 +22,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.pagination {
+  text-align: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
