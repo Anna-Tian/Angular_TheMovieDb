@@ -6,25 +6,25 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 
-// export interface Config {
-//   homepage: string;
-//   id: number;
-//   original_title: string;
-// }
-
 export interface Config {
-  page: number;
-  total_results: number;
-  total_pages: string;
+  homepage: string;
+  id: number;
+  original_title: string;
 }
+
+// export interface Config {
+//   page: number;
+//   total_results: number;
+//   total_pages: string;
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
-  // configUrl = "https://api.themoviedb.org/3/movie/550?api_key=b45808cfc639faa44235410b835b0912";
+  configUrl = "https://api.themoviedb.org/3/movie/550?api_key=b45808cfc639faa44235410b835b0912";
 
-  configUrl = "https://api.themoviedb.org/3/discover/movie?api_key=f68c64ab26f5bb2a81e09f4af4dff582&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2015";
+  // configUrl = "https://api.themoviedb.org/3/discover/movie?api_key=f68c64ab26f5bb2a81e09f4af4dff582&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2015";
 
 
   constructor(private http: HttpClient) { }
