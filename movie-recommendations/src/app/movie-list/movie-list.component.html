@@ -2,11 +2,14 @@
 
 <mat-grid-list cols="4">
   <mat-grid-tile
-    *ngFor="let movie of movieList.results"
-    [colspan]="1">
+    *ngFor="let movie of movies"
+    [colspan]="1"
+    [rowspan]="2">
 
     <mat-card class="card">
-      <mat-card-header>{{movie.title}}</mat-card-header>
+      <img src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
+      <mat-card-title>{{movie.title}}</mat-card-title>
+      <mat-card-content>{{movie.overview}}</mat-card-content>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

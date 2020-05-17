@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
-import { MovieList } from './movie-list';
+import { MovieList, ScienceFictionMovie } from './movie-list';
 
 @Component({
   selector: 'app-movie-list',
@@ -9,7 +9,7 @@ import { MovieList } from './movie-list';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-  movieList: MovieList;
+  movies: ScienceFictionMovie[];
 
   constructor(private movieListService: MovieListService) { }
 
@@ -18,8 +18,10 @@ export class MovieListComponent implements OnInit {
   }
 
   getMovieList(): void {
-    this.movieListService.getMovieList()
-      .subscribe(movieLists => this.movieList = movieLists)
+    this.movieListService.getMovieList().subscribe(allResult => {
+      this.movies = allResult.reduce((r, e) => r.concat(e.results), []);
+      console.log('movies', this.movies);
+    });
   }
 
 }
