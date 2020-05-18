@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
 import { MovieList, ScienceFictionMovie } from './movie-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -16,7 +17,10 @@ export class MovieListComponent implements OnInit {
     currentPage: 1, 
     totalItems: this.totalMovies}
 
-  constructor(private movieListService: MovieListService) { }
+  constructor(
+    private movieListService: MovieListService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.getMovieList();
@@ -33,6 +37,10 @@ export class MovieListComponent implements OnInit {
   onPageChange(event){
     console.log(event);
     this.paginationConfig.currentPage = event;
+  }
+
+  NavigateToInfo(movie) {
+    this.router.navigate(['/movie-info', movie.id])
   }
 
 }

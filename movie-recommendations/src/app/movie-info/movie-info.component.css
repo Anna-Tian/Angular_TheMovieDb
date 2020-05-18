@@ -1,0 +1,58 @@
+.banner {
+  width: 100%;
+  min-width: 1200px;
+  background: #392f59 url(src/assets/banner.png) no-repeat 50%;
+  margin-bottom: 80px;
+}
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  height: 300px;
+  position: relative;
+  display: flex;
+}
+.poster {
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  top: 40px;
+  position: relative;
+  background-color: gainsboro;
+  padding: 5px;
+}
+.info {
+  top: 40px;
+  position: relative;
+  margin-left: 30px;
+  width: 60%;
+}
+.movieTitle {
+  margin: 0px;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.movieInfo {
+  font-weight: normal;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 5px 0px;
+}
+.movieInfoName {
+  font-style: italic;
+  color: lightgoldenrodyellow;
+}
+.infoOther {
+  width: 20%;
+  top: 40px;
+  position: relative;
+}
+.infoVote {
+  width: 45%;
+  margin-right: 5%;
+  display: inline-block;
+}
+.vote {
+  display: flex;
+}
+.voteInfo {
+  width: 45%;
+  margin: auto;
+}
