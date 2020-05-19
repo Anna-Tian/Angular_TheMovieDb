@@ -79,7 +79,7 @@ export class RatingComponent implements OnInit {
 
   getCurrentMovieRating(movieId: number): RatingModel[] {
     let localStorageItem = this.getAllRatings();
-    localStorageItem.filter((rating) => rating.movieId == movieId);
+    localStorageItem = localStorageItem.filter((rating) => rating.movieId === movieId);
     return localStorageItem == null ? [] : localStorageItem;
   }
 
