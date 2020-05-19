@@ -20,39 +20,35 @@ export class RatingComponent implements OnInit {
   nextId: string;
   maxId: number;
   currentRate = 0;
+  isRating: boolean;
+  
   emotionName: string;
   message: string;
   ratings: RatingModel[];
-  isRating: boolean;
+  
   constructor(
     private route: ActivatedRoute,
-  ) { 
-    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'));
+  ) { }
 
-    let ratings = this.getRating(this.movieId);
-    console.log('ratings', ratings);
-    if (ratings.length != 0) {
+  ngOnInit() {
+    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'));
+    this.ratings = this.getCurrentMovieRating(this.movieId);
+    
+    // initial different properties
+    if (this.ratings.length != 0) {
       this.isRating = true;
-      this.maxId = ratings[ratings.length-1].no;
-      this.nextId = `${this.movieId}_${this.maxId}`
+      this.maxId = this.ratings[this.ratings.length-1].no + 1;
     } else {
       this.isRating = false;
       this.maxId = 0;
-      this.nextId = `${this.movieId}_${this.maxId}`;
     }
   }
 
-  ngOnInit() {
-    
-    this.ratings = this.getRating(this.movieId);
-
-  }
-
   addRating() {
-    let ratings = this.getAllRating();
-    this.maxId++;
+    // push new rating to the whole rating list
+    let allRatings = this.getAllRatings();
     this.nextId = `${this.movieId}_${this.maxId}`
-    ratings.push({
+    allRatings.push({
       id: this.nextId,
       no: this.maxId,
       movieId: this.movieId,
@@ -60,39 +56,35 @@ export class RatingComponent implements OnInit {
       emotionName: this.emotionName,
       message: this.message
     });
-    this.setLocalStorageRatings(ratings);
-    this.ratings = this.getRating(this.movieId);
-
-    console.log('ratings', ratings);
-    console.log('this.ratings', this.ratings);
+    this.setLocalStorageRatings(allRatings);
+    
+    this.ratings = this.getCurrentMovieRating(this.movieId);
+    this.maxId = this.ratings[this.ratings.length-1].no + 1;
     this.isRating = true;
-    console.log('addingRating - isRating', this.isRating);
   }
 
   removeRating(id: string): void {
-    let ratings = this.getAllRating();
-    ratings = ratings.filter((rating) => rating.id != id);
-    this.setLocalStorageRatings(ratings);
-    this.ratings = this.getRating(this.movieId);
+    // remove rating from the whole rating list
+    let currentRating = this.getAllRatings();
+    currentRating = currentRating.filter((rating) => rating.id != id);
+    this.setLocalStorageRatings(currentRating);
+    
+    // get rating from current movie
+    this.ratings = this.getCurrentMovieRating(this.movieId);
     if(this.ratings.length ==0){
       this.isRating = false;
+      this.maxId = 0;
     }
-    this.maxId--;
-    console.log('removeRating function', ratings);
-    console.log('removeRating - isRating', this.isRating);
   }
 
-  getRating(movieId: number): RatingModel[] {
-    let localStorageItem = JSON.parse(localStorage.getItem('ratings'));
-    console.log('localStorageItem1111111', localStorageItem);
-
-    localStorageItem = localStorageItem.ratings.filter((rating) => rating.movieId == movieId);
-    console.log('localStorageItem2222222', localStorageItem);
+  getCurrentMovieRating(movieId: number): RatingModel[] {
+    let localStorageItem = this.getAllRatings();
+    localStorageItem.filter((rating) => rating.movieId == movieId);
     return localStorageItem == null ? [] : localStorageItem;
   }
-  getAllRating(): RatingModel[] {
+
+  getAllRatings(): RatingModel[] {
     let localStorageItem = JSON.parse(localStorage.getItem('ratings'));
-    console.log('getAllRating', localStorageItem);
     return localStorageItem == null ? [] : localStorageItem.ratings;
   }
 
