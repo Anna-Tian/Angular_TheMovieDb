@@ -1,0 +1,67 @@
+.ratingStar {
+  font-size: xx-large;
+  color: darkmagenta;
+}
+
+
+.amazing{background-image:url(src/assets/amazing.jpeg)}
+.happy{background-image:url(src/assets/happy.png)}
+.lonely{background-image:url(src/assets/lonely.png)}
+.cry{background-image:url(src/assets/cry.jpeg)}
+.angry{background-image:url(src/assets/angry.png)}
+
+.face-selector input:active +.face, .face-selector input:active +.face{opacity: .9;}
+.face-selector input:checked +.face, .face-selector input:checked +.face{
+  -webkit-filter: none;
+     -moz-filter: none;
+          filter: none;
+}
+.face-selector {
+  width: 575px;
+}
+.face{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:100px;
+  height:70px;
+  -webkit-transition: all 100ms ease-in;
+     -moz-transition: all 100ms ease-in;
+          transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.5) grayscale(1) opacity(.7);
+     -moz-filter: brightness(1.5) grayscale(1) opacity(.7);
+          filter: brightness(1.5) grayscale(1) opacity(.7);
+}
+.face:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+     -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+          filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+.faceLabel {
+  display: flex;
+  width: 575px;
+  justify-content: center;
+}
+.ratingAnswer {
+  display: flex;
+}
+.removeRating {
+  width: 10%;
+  align-self: center;
+}
+.removeBtn {
+  width: 100%;
+}
+.ratingResult {
+  width: 70%;
+  margin: 0px 10% 0px 5%;
+}
+.ratingBrief {
+  width: 50%;
+  display: inline-block;
+}
+.ratingMessage {
+  background-color: aliceblue;
+  border-radius: 5px;
+}

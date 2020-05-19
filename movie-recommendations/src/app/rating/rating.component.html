@@ -1,0 +1,56 @@
+<h2>Rating Component</h2>
+
+<form #ratingForm="ngForm" (ngSubmit)="addRating()">
+  <mat-card>
+    <ngb-rating class="ratingStar" [(rate)]="currentRate" [max]="10"></ngb-rating>
+    <pre>Rate: <b>{{currentRate}}</b></pre>
+    <div class="face-selector">
+      <input id="amazing" type="radio" name="emotionName" value="Amazing" [(ngModel)]="emotionName"/>
+      <label class="face amazing" for="amazing"></label>
+    
+      <input id="happy" type="radio" name="emotionName" value="Happy" [(ngModel)]="emotionName"/>
+      <label class="face happy" for="happy"></label>
+    
+      <input id="lonely" type="radio" name="emotionName" value="Lonely" [(ngModel)]="emotionName"/>
+      <label class="face lonely" for="lonely"></label>
+    
+      <input id="cry" type="radio" name="emotionName" value="Cry" [(ngModel)]="emotionName"/>
+      <label class="face cry" for="cry"></label>
+    
+      <input id="angry" type="radio" name="emotionName" value="Angry" [(ngModel)]="emotionName"/>
+      <label class="face angry" for="angry"></label>
+      
+      <div class="faceLabel">
+        <p class="faceLabel">Amazing</p>
+        <p class="faceLabel">Happy</p>
+        <p class="faceLabel">Lonely</p>
+        <p class="faceLabel">Cry</p>
+        <p class="faceLabel">Angry</p>
+      </div>
+      <h2>{{emotionName}}</h2>
+    </div>
+    <label for="message">Comments: </label>
+    <input type="text" name="message" id="message" [(ngModel)]="message">
+    <button type="submit" value="submitRating">Submit</button>
+  </mat-card>
+</form>
+
+<div *ngIf="isRating">
+  <h2>Your Rating: </h2>
+  <mat-card *ngFor="let rating of ratings">
+    <form class="ratingAnswer" (ngSubmit)="removeRating(rating.id)">
+      <div class="removeRating">
+        <button class="removeBtn" type="submit" value="removeRating">Remove</button>
+      </div>
+      <div class="ratingResult">
+        <div class="ratingBrief">Rate Number: {{rating.rateNo}}</div>
+        <div class="ratingBrief">Emotion: {{rating.emotionName}}</div>
+        <div>Comments: </div>
+        <div class="ratingMessage">{{rating.message}}</div>
+      </div>
+    </form>
+  </mat-card>
+
+</div>
+
+

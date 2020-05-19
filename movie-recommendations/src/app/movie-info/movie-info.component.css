@@ -17,12 +17,13 @@
   position: relative;
   background-color: gainsboro;
   padding: 5px;
+  margin-left: 3%;
 }
 .info {
   top: 40px;
   position: relative;
   margin-left: 30px;
-  width: 60%;
+  width: 55%;
 }
 .movieTitle {
   margin: 0px;
@@ -41,8 +42,9 @@
 }
 .infoOther {
   width: 20%;
-  top: 40px;
+  align-self: center;
   position: relative;
+  text-align: center;
 }
 .infoVote {
   width: 45%;
@@ -51,8 +53,14 @@
 }
 .vote {
   display: flex;
+  margin-top: 10%;
 }
 .voteInfo {
   width: 45%;
+  margin: auto;
+}
+
+.section {
+  width: 80%;
   margin: auto;
 }

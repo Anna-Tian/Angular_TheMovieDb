@@ -1,38 +1,42 @@
 <h2>Movie Info Component</h2>
 
-<div class="section">
-  <div class="banner">
-    <div class="wrapper">
-      <img class="poster" src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}"/>
-      <div class="info">
-        <h1 class="movieTitle">{{movie.title}}</h1>
-        <h3 class="movieInfo"><b class="movieInfoName">Genres: </b> {{movieString.genres}}</h3>
-        <h3 class="movieInfo"><b class="movieInfoName">Production Country: </b> {{movieString.productionCountries}}</h3>
-        <h3 class="movieInfo"><b class="movieInfoName">Spoken Languages: </b> {{movieString.spokenLanguages}}</h3>
-        <h3 class="movieInfo"><b class="movieInfoName">Release Date: </b> {{movie.release_date}}</h3>
-        <h3 class="movieInfo"><b class="movieInfoName">Runtime: </b> {{movie.runtime}}</h3>
-        <h3 class="movieInfo"><b class="movieInfoName">IMDb link: </b><a _ngcontent-wkd-c45="" href="https://www.imdb.com/title/tt1634106" style="color: wheat;">tt1634106</a></h3>
-      </div>
-      <div class="infoOther">
-        <div>
-          <h4 class="movieInfoName">Status:</h4>
-          <h1 class="movieTitle">{{movie.status}}</h1>
-        </div>
-        <div class="vote">
-          <div class="voteInfo">
-            <h4 class="movieInfoName">Vote Average:</h4>
-            <h1 class="movieTitle">{{movie.vote_average}}</h1>
-          </div>
-          <div class="voteInfo">
-            <h4 class="movieInfoName">Vote Count:</h4>
-            <h1 class="movieTitle">{{movie.vote_count}}</h1>
-          </div>
-        </div>
-
-
-      </div>
-      
+<div class="banner">
+  <div class="wrapper">
+    <img class="poster" src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}"/>
+    <div class="info">
+      <h1 class="movieTitle">{{movie.title}}</h1>
+      <h5 class="movieInfo"><b class="movieInfoName">Genres: </b> {{movieString.genres}}</h5>
+      <h5 class="movieInfo"><b class="movieInfoName">Production Country: </b> {{movieString.productionCountries}}</h5>
+      <h5 class="movieInfo"><b class="movieInfoName">Spoken Languages: </b> {{movieString.spokenLanguages}}</h5>
+      <h5 class="movieInfo"><b class="movieInfoName">Release Date: </b> {{movie.release_date}}</h5>
+      <h5 class="movieInfo"><b class="movieInfoName">Runtime: </b> {{movie.runtime}}</h5>
+      <h5 class="movieInfo"><b class="movieInfoName">IMDb link: </b><a _ngcontent-wkd-c45="" href="https://www.imdb.com/title/tt1634106" style="color: wheat;">tt1634106</a></h5>
     </div>
-
+    <div class="infoOther">
+      <div>
+        <h6 class="movieInfoName">Status:</h6>
+        <h1 class="movieTitle">{{movie.status}}</h1>
+      </div>
+      <div class="vote">
+        <div class="voteInfo">
+          <h6 class="movieInfoName">Vote Average:</h6>
+          <h1 class="movieTitle">{{movie.vote_average}}</h1>
+        </div>
+        <div class="voteInfo">
+          <h6 class="movieInfoName">Vote Count:</h6>
+          <h1 class="movieTitle">{{movie.vote_count}}</h1>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div class="section">
+  <app-rating></app-rating>
+  <!-- <div class="overview">
+    <mat-card class="card">
+      <mat-card-title class="cardTitle">Storyline</mat-card-title>
+      <mat-card-content class= "cardContent">{{movie.overview}}</mat-card-content>
+    </mat-card>
+  </div> -->
+  <div class="similarMovie"></div>
 </div>
