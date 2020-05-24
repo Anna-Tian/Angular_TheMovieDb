@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
-import { MovieList, ScienceFictionMovie } from './movie-list';
+import { ScienceFictionMovie } from './movie-list';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,7 +30,6 @@ export class MovieListComponent implements OnInit {
     this.movieListService.getMovieList().subscribe(allResult => {
       this.movies = allResult;
       this.totalMovies = this.movies.length;
-      console.log('movies', this.movies);
     });
   }
 

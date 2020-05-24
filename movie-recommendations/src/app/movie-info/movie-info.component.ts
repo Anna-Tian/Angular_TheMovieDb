@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { MovieInfoService } from './movie-info.service';
 import { MovieInfo, MovieArray } from './movie-info';
 
@@ -13,12 +12,6 @@ import { MovieInfo, MovieArray } from './movie-info';
 export class MovieInfoComponent implements OnInit {
   movieId: number;
   movie: MovieInfo;
-  // movieArray = [{
-  //   id: 0,
-  //   genres: "",
-  //   productionCountries: "",
-  //   spokenLanguages: ""
-  // }];
   movieString: MovieArray;
 
   constructor(
@@ -33,7 +26,6 @@ export class MovieInfoComponent implements OnInit {
   getMovieInfo(id: number) {
     this.movieInfoService.getMovieInfo(id).subscribe(movieDetails => {
       this.movie = movieDetails;
-      console.log('allResult', movieDetails);
       
       let movieArray = [];
       movieArray.push({
@@ -43,15 +35,7 @@ export class MovieInfoComponent implements OnInit {
         spokenLanguages: movieDetails.spoken_languages.map(x => x.name).join(', ')
       })
       this.movieString = movieArray[0];
-
-      
     })
-
-    // this.movieListService.getMovieList().subscribe(allResult => {
-    //   this.movies = allResult.reduce((r, e) => r.concat(e.results), []);
-    //   this.totalMovies = this.movies.length;
-    //   console.log('movies', this.movies);
-    // });
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, Subject, Observable } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { SimilarMovie, SimilarMovieResult } from './similar-movie';
 
 @Injectable({

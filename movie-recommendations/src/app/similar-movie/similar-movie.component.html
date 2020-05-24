@@ -1,7 +1,6 @@
 <h2>More Like This</h2>
 
 <ngb-carousel class="carousel">
-  
   <ng-template ngbSlide *ngFor="let movies of movieFormatted" class="carouselItem">
     <div class="movie" *ngFor="let movie of movies">
       <img *ngIf="movie.poster_path != null" class="img" src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SimilarMovieService } from './similar-movie.service';
-import { SimilarMovie, SimilarMovieResult } from './similar-movie';
+import { SimilarMovieResult } from './similar-movie';
 
 @Component({
   selector: 'app-similar-movie',
