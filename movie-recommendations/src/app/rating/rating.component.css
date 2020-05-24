@@ -1,6 +1,10 @@
+.card {
+  margin: 3% 0;
+}
+
 .ratingStar {
   font-size: xx-large;
-  color: darkmagenta;
+  color: #7969b0;
 }
 
 
@@ -52,6 +56,8 @@
 }
 .removeBtn {
   width: 100%;
+  background-color: #554686;
+  color: white;
 }
 .ratingResult {
   width: 70%;
@@ -62,6 +68,16 @@
   display: inline-block;
 }
 .ratingMessage {
-  background-color: aliceblue;
+  background-color: #d2cde5;
   border-radius: 5px;
+}
+
+.message {
+  width: 50%;
+  margin-left: 10px;
+}
+.btn {
+  background-color: #554686;
+  color: white;
+  margin-left: 5%;
 }

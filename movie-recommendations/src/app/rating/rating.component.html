@@ -1,7 +1,7 @@
-<h2>Rating Component</h2>
+<h2>Rate This Movie</h2>
 
 <form #ratingForm="ngForm" (ngSubmit)="addRating()">
-  <mat-card>
+  <mat-card class="card">
     <ngb-rating class="ratingStar" [(rate)]="currentRate" [max]="10"></ngb-rating>
     <pre>Rate: <b>{{currentRate}}</b></pre>
     <div class="face-selector">
@@ -29,17 +29,17 @@
       </div>
     </div>
     <label for="message">Comments: </label>
-    <input type="text" name="message" id="message" [(ngModel)]="message">
-    <button type="submit" value="submitRating">Submit</button>
+    <input class="message" type="text" name="message" id="message" [(ngModel)]="message">
+    <button mat-raised-button class="btn" type="submit" value="submitRating">Submit</button>
   </mat-card>
 </form>
 
 <div *ngIf="isRating">
   <h2>Your Rating: </h2>
-  <mat-card *ngFor="let rating of ratings">
+  <mat-card class="card" *ngFor="let rating of ratings">
     <form class="ratingAnswer" (ngSubmit)="removeRating(rating.id)">
       <div class="removeRating">
-        <button class="removeBtn" type="submit" value="removeRating">Remove</button>
+        <button mat-raised-button class="removeBtn" type="submit" value="removeRating">Remove</button>
       </div>
       <div class="ratingResult">
         <div class="ratingBrief">Rate Number: {{rating.rateNo}}</div>

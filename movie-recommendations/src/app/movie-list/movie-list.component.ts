@@ -28,7 +28,7 @@ export class MovieListComponent implements OnInit {
 
   getMovieList(): void {
     this.movieListService.getMovieList().subscribe(allResult => {
-      this.movies = allResult.reduce((r, e) => r.concat(e.results), []);
+      this.movies = allResult;
       this.totalMovies = this.movies.length;
       console.log('movies', this.movies);
     });

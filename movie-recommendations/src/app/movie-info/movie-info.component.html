@@ -1,4 +1,4 @@
-<h2>Movie Info Component</h2>
+<p class="navigation"><a [routerLink]="['/movie-list']">Home</a> / {{movie.title}}</p>
 
 <div class="banner">
   <div class="wrapper">
@@ -33,8 +33,8 @@
 <div class="section">
   <app-rating></app-rating>
   <div class="overview">
+    <h2>Storyline</h2>
     <mat-card class="card">
-      <mat-card-title class="cardTitle">Storyline</mat-card-title>
       <mat-card-content class= "cardContent">{{movie.overview}}</mat-card-content>
     </mat-card>
   </div>
