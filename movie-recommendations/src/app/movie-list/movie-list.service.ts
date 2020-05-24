@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
-import { Observable, throwError, forkJoin } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 import { MovieList } from './movie-list';
 
 
@@ -27,9 +24,4 @@ export class MovieListService {
   getData(url){
     return this.http.get<MovieList>(url);
   }
-
-
-
-
-
 }

@@ -1,0 +1,24 @@
+.carousel {
+  height: 420px;
+  background-image: linear-gradient(-45deg, #392F59, #744550);
+}
+.movie {
+  margin: 0 1%;
+  width: 18%;
+  padding: 30px 4px;
+  display: inline-grid;
+}
+.img {
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+.carouselItem {
+  text-align: center;
+}
+.movieInfo {
+  font-weight: normal;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 5px 0px;
+}

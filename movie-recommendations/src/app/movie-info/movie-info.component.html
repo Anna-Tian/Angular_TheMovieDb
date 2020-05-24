@@ -10,7 +10,7 @@
       <h5 class="movieInfo"><b class="movieInfoName">Spoken Languages: </b> {{movieString.spokenLanguages}}</h5>
       <h5 class="movieInfo"><b class="movieInfoName">Release Date: </b> {{movie.release_date}}</h5>
       <h5 class="movieInfo"><b class="movieInfoName">Runtime: </b> {{movie.runtime}}</h5>
-      <h5 class="movieInfo"><b class="movieInfoName">IMDb link: </b><a _ngcontent-wkd-c45="" href="https://www.imdb.com/title/tt1634106" style="color: wheat;">tt1634106</a></h5>
+      <h5 class="movieInfo"><b class="movieInfoName">IMDb link: </b><a _ngcontent-wkd-c45="" href="https://www.imdb.com/title/{{movie.imdb_id}}" style="color: wheat;">{{movie.imdb_id}}</a></h5>
     </div>
     <div class="infoOther">
       <div>
@@ -32,11 +32,11 @@
 </div>
 <div class="section">
   <app-rating></app-rating>
-  <!-- <div class="overview">
+  <div class="overview">
     <mat-card class="card">
       <mat-card-title class="cardTitle">Storyline</mat-card-title>
       <mat-card-content class= "cardContent">{{movie.overview}}</mat-card-content>
     </mat-card>
-  </div> -->
-  <div class="similarMovie"></div>
+  </div>
+  <app-similar-movie></app-similar-movie>
 </div>

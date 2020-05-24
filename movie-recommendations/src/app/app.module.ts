@@ -9,6 +9,7 @@ import {DemoMaterialModule} from './material-module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { RatingComponent } from './rating/rating.component';
+import { SimilarMovieComponent } from './similar-movie/similar-movie.component';
 
 
 
@@ -16,7 +17,8 @@ import { RatingComponent } from './rating/rating.component';
    declarations: [
       AppComponent,
       routingComponents,
-      RatingComponent
+      RatingComponent,
+      SimilarMovieComponent
    ],
    imports: [
       BrowserModule,
