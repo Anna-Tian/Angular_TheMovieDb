@@ -13,6 +13,13 @@ import { AppComponent } from './app.component';
 import { RatingComponent } from './movie-info/rating/rating.component';
 import { SimilarMovieComponent } from './movie-info/similar-movie/similar-movie.component';
 
+//ng-zorro
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NZ_I18N, en_US, NgZorroAntdModule} from 'ng-zorro-antd';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 
 @NgModule({
@@ -29,9 +36,11 @@ import { SimilarMovieComponent } from './movie-info/similar-movie/similar-movie.
       HttpClientModule,
       NgxPaginationModule,
       FormsModule,
-      NgbModule
+      NgbModule,
+      NgZorroAntdModule,
+      BrowserAnimationsModule
    ],
-   providers: [],
+   providers: [{ provide: NZ_I18N, useValue: en_US }],
    bootstrap: [
       AppComponent
    ]
