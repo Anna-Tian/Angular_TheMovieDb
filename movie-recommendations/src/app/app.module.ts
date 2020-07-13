@@ -4,12 +4,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { AppComponent } from './app.component';
 import {DemoMaterialModule} from './material-module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
-import { RatingComponent } from './rating/rating.component';
-import { SimilarMovieComponent } from './similar-movie/similar-movie.component';
+
+//Components
+import { AppComponent } from './app.component';
+import { RatingComponent } from './movie-info/rating/rating.component';
+import { SimilarMovieComponent } from './movie-info/similar-movie/similar-movie.component';
 
 
 
