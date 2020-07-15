@@ -126,5 +126,10 @@
   "defaultProject": "movie-recommendations",
   "cli": {
     "analytics": "fb4c588a-8f69-4c1a-b238-b9615676ddec"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "less"
+    }
   }
 }

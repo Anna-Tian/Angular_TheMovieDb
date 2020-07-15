@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieListService } from './movie-list.service';
-import { ScienceFictionMovie } from './movie-list';
+import { MovieResult } from '../movie/movie';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-  movies: ScienceFictionMovie[];
+  movies: MovieResult[];
   totalMovies: number;
   paginationConfig = {
     itemsPerPage: 16, 

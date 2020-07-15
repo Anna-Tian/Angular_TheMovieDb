@@ -8,16 +8,19 @@ import {DemoMaterialModule} from './material-module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 
-//Components
-import { AppComponent } from './app.component';
-import { RatingComponent } from './movie-info/rating/rating.component';
-import { SimilarMovieComponent } from './movie-info/similar-movie/similar-movie.component';
-
 //ng-zorro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N, en_US, NgZorroAntdModule} from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+
+//Components
+import { AppComponent } from './app.component';
+import { RatingComponent } from './movie-info/rating/rating.component';
+import { SimilarMovieComponent } from './movie-info/similar-movie/similar-movie.component';
+import { MovieComponent } from './movie/movie.component';
+import { MoviePopularComponent } from './movie/movie-popular/movie-popular.component';
+import { MoviePopularAllComponent } from './movie/movie-popular/movie-popular-all/movie-popular-all.component';
 
 registerLocaleData(en);
 
@@ -27,7 +30,10 @@ registerLocaleData(en);
       AppComponent,
       routingComponents,
       RatingComponent,
-      SimilarMovieComponent
+      SimilarMovieComponent,
+      MovieComponent,
+      MoviePopularComponent,
+      MoviePopularAllComponent
    ],
    imports: [
       BrowserModule,
