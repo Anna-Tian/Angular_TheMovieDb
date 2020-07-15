@@ -1,0 +1,85 @@
+.sectionHeader {
+  h3 {
+    float: left;
+  }
+  a {
+    float: right;
+    font-size: 20px;
+  }
+}
+
+.popularContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  .card {
+    display: inline-block;
+    width: min-content;
+    min-width: min-content;
+    margin: 10px;
+    // padding: 15px 10px;
+    border-radius: 15px;
+    ::ng-deep .ant-card-body {
+      padding: 0;
+      text-align: center;
+    }
+  
+    // vote average status
+    ::ng-deep .ant-progress {
+      display: block;
+      ::ng-deep .ant-progress-inner {
+        position: absolute;
+        left: 0;
+        background: white;
+        margin: 5px 0 0 5px;
+        padding: 2px;
+      }
+    }
+  
+    // image
+    img {
+      // border-radius: 5px;
+      // width: 120px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  
+    // card title
+    h2 {
+      font-size: 1em;
+      min-height: 36px;
+      -webkit-box-pack: center;
+      margin-bottom: 0;
+      text-align: left;
+      padding: 0 10px;
+    }
+  
+    // release date
+    p {
+      margin-bottom: 0;
+      text-align: left;
+      padding: 0 10px 10px 10px;
+    }
+  }
+}
+
+
+
+// .cardContent {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 3;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   text-align: initial;
+// }
+// .cardTitle {
+//   font-size: 20px;
+//   min-height: 50px;
+//   margin: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+// }

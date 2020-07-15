@@ -1,0 +1,67 @@
+.container {
+  width: 100%;
+  display: flex;
+  .selectionContainer {
+    width: 20%;
+    height: fit-content;
+    margin-top: 10px;;
+  }
+  .popularList {
+    width: 80%;
+  }
+}
+
+.card {
+  display: inline-block;
+  width: min-content;
+  min-width: min-content;
+  margin: 10px;
+  // padding: 15px 10px;
+  border-radius: 15px;
+  ::ng-deep .ant-card-body {
+    padding: 0;
+    text-align: center;
+  }
+
+  // vote average status
+  ::ng-deep .ant-progress {
+    display: block;
+    ::ng-deep .ant-progress-inner {
+      position: absolute;
+      left: 0;
+      background: white;
+      margin: 5px 0 0 5px;
+      padding: 2px;
+    }
+  }
+
+  // image
+  img {
+    // border-radius: 5px;
+    // width: 120px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 154px;
+  }
+
+  // card title
+  h2 {
+    font-size: 1em;
+    min-height: 36px;
+    -webkit-box-pack: center;
+    margin-bottom: 0;
+    text-align: left;
+    padding: 0 10px;
+  }
+
+  // release date
+  p {
+    margin-bottom: 0;
+    text-align: left;
+    padding: 0 10px 10px 10px;
+  }
+}
+
+.pagination {
+  justify-content: center;
+}

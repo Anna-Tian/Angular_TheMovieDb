@@ -1,0 +1,14 @@
+<div class="section">
+  <div class="sectionHeader">
+    <h3>What's Popular</h3>
+    <a nz-button nzType="link" [routerLink]="['/movie-popular-all']">See All</a>
+  </div>
+  <div class="popularContainer">
+    <nz-card nzHoverable class="card" *ngFor="let movie of movies" (click)="NavigateToInfo(movie)">
+      <nz-progress [nzPercent]="movie.vote_average * 10" nzType="circle" [nzFormat]="voteRateFormat" [nzWidth]="40"></nz-progress>
+      <img alt="example" src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}" />
+      <h2 nz-typography nzEllipsis nzEllipsisRows="2">{{ movie.title }}</h2>
+      <p>{{ movie.release_date }}</p>
+    </nz-card>
+  </div>
+</div>

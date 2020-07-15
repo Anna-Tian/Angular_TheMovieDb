@@ -1,0 +1,38 @@
+<div class="section">
+  <h2>Popular Movies</h2>
+  <div class="container">
+    <div class="selectionContainer">
+      <nz-collapse nzAccordion>
+        <nz-collapse-panel [nzHeader]="'Sort'" [nzActive]="true">
+          <p>Sort Results By</p>
+          <nz-cascader [nzOptions]="sortOption" [ngModel]="'Popularity Descending'" (ngModelChange)="onChangesSort($event)"> </nz-cascader>
+        </nz-collapse-panel>
+        <nz-collapse-panel [nzHeader]="'Filters'" [nzActive]="false">
+          <p>content 2</p>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+
+    <div nz-row nzJustify="space-around" class="popularList">
+      <nz-card nzHoverable class="card" *ngFor="let movie of movies" (click)="NavigateToInfo(movie)" nz-col nzSm="4">
+        <nz-progress [nzPercent]="movie.vote_average * 10" nzType="circle" [nzFormat]="voteRateFormat" [nzWidth]="35"></nz-progress>
+        <img *ngIf="movie.poster_path != null" class="img" src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
+        <img *ngIf="movie.poster_path == null" class="img" src="/assets/noposter.jpg">
+        <h2 nz-typography nzEllipsis nzEllipsisRows="2">{{ movie.title }}</h2>
+        <p>{{ movie.release_date }}</p>
+      </nz-card>
+    </div>
+  </div>
+  <nz-pagination class="pagination" [nzPageIndex]="this.paginationConfig.pageIndex" [nzTotal]="this.paginationConfig.totalItems" 
+    (nzPageIndexChange)="onPageIndexChange($event)" nzShowQuickJumper>
+  </nz-pagination>
+
+  <!-- <nz-card nzHoverable class="card" *ngFor="let movie of movies" (click)="NavigateToInfo(movie)">
+    <img mat-card-image src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}" />
+    <h2 nz-typography nzEllipsis nzEllipsisRows="2">{{ movie.title }}</h2>
+  </nz-card>
+  
+  <nz-pagination class="pagination" [nzPageIndex]="this.paginationConfig.pageIndex" [nzTotal]="this.paginationConfig.totalItems" 
+    (nzPageIndexChange)="onPageIndexChange($event)" nzShowQuickJumper>
+  </nz-pagination> -->
+</div>
