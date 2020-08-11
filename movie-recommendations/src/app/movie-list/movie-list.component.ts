@@ -13,9 +13,9 @@ export class MovieListComponent implements OnInit {
   movies: MovieResult[];
   totalMovies: number;
   paginationConfig = {
-    itemsPerPage: 16, 
-    currentPage: 1, 
-    totalItems: this.totalMovies}
+    itemsPerPage: 16,
+    currentPage: 1,
+    totalItems: this.totalMovies};
 
   constructor(
     private movieListService: MovieListService,
@@ -39,7 +39,7 @@ export class MovieListComponent implements OnInit {
   }
 
   NavigateToInfo(movie) {
-    this.router.navigate(['/movie-info', movie.id])
+    this.router.navigate(['/movie-info', movie.id]);
   }
 
 }

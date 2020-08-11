@@ -11,21 +11,21 @@ import { MovieService } from '../movie.service';
 })
 
 export class MoviePopularComponent implements OnInit {
-  movies: MovieResult[];
-  paginationConfig = {
-    pageSize: 5, 
-    pageIndex: 1, 
-    totalItems: 0
-  }
-  voteRateFormat = (percent: number) => percent/10;
-  movieDiscover: MovieDiscover = {
-    page: `&page=${this.paginationConfig.pageIndex}`
-  };
 
   constructor(
     private movieService: MovieService,
     private router: Router
     ) { }
+  movies: MovieResult[];
+  paginationConfig = {
+    pageSize: 5,
+    pageIndex: 1,
+    totalItems: 0
+  };
+  movieDiscover: MovieDiscover = {
+    page: `&page=${this.paginationConfig.pageIndex}`
+  };
+  voteRateFormat = (percent: number) => percent / 10;
 
   ngOnInit() {
     this.getMovieList();
@@ -47,6 +47,6 @@ export class MoviePopularComponent implements OnInit {
   // }
 
   NavigateToInfo(movie) {
-    this.router.navigate(['/movie-info', movie.id])
+    this.router.navigate(['/movie-info', movie.id]);
   }
 }

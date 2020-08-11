@@ -12,27 +12,28 @@ import { MovieListPage, MovieResult } from '../movie/movie';
 export class MovieListService {
   constructor(private http: HttpClient) { }
 
-  private getMovieListPage () {
+  private getMovieListPage() {
     return this.http.get<MovieListPage>(`https://api.themoviedb.org/3/discover/movie?api_key=f68c64ab26f5bb2a81e09f4af4dff582&language=en-US&sort_by=popularity.desc&include_adult=false&page=1&with_genres=878`);
   }
 
-  getMovieList (){
-    let calls = [];
+  getMovieList(){
+    const calls = [];
     let totalPage = 0;
-    var subject = new Subject<Array<MovieResult>>();
+    const subject = new Subject<Array<MovieResult>>();
     this.getMovieListPage().subscribe ((movies) => {
       totalPage = movies.total_pages;
       for (let page = 1; page < totalPage + 1; page++) {
         calls.push(this.getData(`https://api.themoviedb.org/3/discover/movie?api_key=f68c64ab26f5bb2a81e09f4af4dff582&language=en-US&sort_by=popularity.desc&include_adult=false&page=${page}&with_genres=878`));
       }
-      forkJoin(...calls).subscribe((movies) => {
+      // tslint:disable-next-line: deprecation
+      forkJoin(...calls).subscribe((similarMovies) => {
         let movieList = Array<MovieResult>();
         // Get movie result list
-        movieList = movies.reduce((r, e) => r.concat(e.results), []);
+        movieList = similarMovies.reduce((r, e) => r.concat(e.results), []);
         subject.next(movieList);
       });
 
-    })
+    });
     return subject.asObservable();
   }
 

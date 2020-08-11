@@ -10,15 +10,19 @@ import { DropdownOption } from 'src/app/utilities';
   styleUrls: ['./movie-popular-all.component.less']
 })
 export class MoviePopularAllComponent implements OnInit {
+
+  constructor(
+    private movieService: MovieService,
+    private router: Router
+    ) { }
   movies: MovieResult[];
   paginationConfig = {
-    pageSize: 5, 
-    pageIndex: 1, 
+    pageSize: 5,
+    pageIndex: 1,
     totalItems: 0
-  }
-  voteRateFormat = (percent: number) => percent/10;
+  };
 
-  //sort
+  // sort
   sortOption: DropdownOption[] = [
     {
       value: '&sort_by=popularity.desc',
@@ -65,11 +69,7 @@ export class MoviePopularAllComponent implements OnInit {
     page: `&page=1`,
     sort_by: `&sort_by=popularity.desc`
   };
-  
-  constructor(
-    private movieService: MovieService,
-    private router: Router
-    ) { }
+  voteRateFormat = (percent: number) => percent / 10;
 
   ngOnInit() {
     this.getMovieList();
@@ -101,7 +101,7 @@ export class MoviePopularAllComponent implements OnInit {
   }
 
   NavigateToInfo(movie) {
-    this.router.navigate(['/movie-info', movie.id])
+    this.router.navigate(['/movie-info', movie.id]);
   }
 
 }

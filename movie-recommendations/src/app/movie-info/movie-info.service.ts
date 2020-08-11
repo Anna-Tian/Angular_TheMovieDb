@@ -7,9 +7,10 @@ import { MovieInfo } from './movie-info';
   providedIn: 'root'
 })
 export class MovieInfoService {
+  apiKey = 'f68c64ab26f5bb2a81e09f4af4dff582';
   constructor(private http: HttpClient) { }
 
-  getMovieInfo (movie_id: number){
-    return this.http.get<MovieInfo>(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=f68c64ab26f5bb2a81e09f4af4dff582&language=en-US`);
+  getMovieInfo(movieId: number){
+    return this.http.get<MovieInfo>(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=en-US`);
   }
 }

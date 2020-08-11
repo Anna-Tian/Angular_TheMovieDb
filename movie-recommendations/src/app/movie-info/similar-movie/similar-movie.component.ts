@@ -19,7 +19,7 @@ export class SimilarMovieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'));
+    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'), 10);
     this.getSimilarMovie(this.movieId);
   }
   getSimilarMovie(id: number) {
@@ -27,10 +27,10 @@ export class SimilarMovieComponent implements OnInit {
       this.similarMovies = movies;
 
       this.movieFormatted = [];
-      var j = -1;
+      let j = -1;
 
-      for (var i = 0; i < this.similarMovies.length; i++) {
-          if (i % 5 == 0) {
+      for (let i = 0; i < this.similarMovies.length; i++) {
+          if (i % 5 === 0) {
               j++;
               this.movieFormatted[j] = [];
               this.movieFormatted[j].push(this.similarMovies[i]);
@@ -39,7 +39,7 @@ export class SimilarMovieComponent implements OnInit {
               this.movieFormatted[j].push(this.similarMovies[i]);
           }
       }
-    })
+    });
   }
 
 }

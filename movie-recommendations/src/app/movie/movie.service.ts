@@ -16,7 +16,7 @@ export class MovieService {
     certification: '',
     certificationGte: '',
     certificationLte: '',
-    include_adult:'&include_adult=false',
+    include_adult: '&include_adult=false',
     include_video: '',
     page: '',
     primary_release_year: '',
@@ -44,16 +44,16 @@ export class MovieService {
   };
   constructor(private http: HttpClient) { }
 
-  getPopularMoviePage (movieDiscover: MovieDiscover) {
-    for(const [key, value] of Object.entries(movieDiscover)) {
+  getPopularMoviePage(movieDiscover: MovieDiscover) {
+    for (const [key, value] of Object.entries(movieDiscover)) {
       if (key in this.discover) {
         this.discover[key] = value;
       }
     }
     return this.http.get<MovieListPage>(`https://api.themoviedb.org/3/discover/movie?${this.getMovieDiscoverString()}`);
   }
-  getPopularMovieList (movieDiscover: MovieDiscover) {
-    var subject = new Subject<Array<MovieResult>>();
+  getPopularMovieList(movieDiscover: MovieDiscover) {
+    const subject = new Subject<Array<MovieResult>>();
 
     this.getPopularMoviePage(movieDiscover).subscribe((movies) => {
       subject.next(movies.results);
@@ -62,7 +62,7 @@ export class MovieService {
   }
 
   getMovieDiscoverString() {
-    var request: string;
+    let request: string;
     request = `${this.discover.api_key}${this.discover.language}${this.discover.region}${this.discover.sort_by}`;
     request = `${request}${this.discover.certification_country}${this.discover.certification}${this.discover.certificationGte}${this.discover.certificationLte}`;
     request = `${request}${this.discover.include_adult}${this.discover.include_video}${this.discover.page}${this.discover.primary_release_year}`;

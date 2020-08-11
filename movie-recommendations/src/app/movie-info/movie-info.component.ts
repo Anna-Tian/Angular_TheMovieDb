@@ -20,22 +20,22 @@ export class MovieInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'));
+    this.movieId = parseInt(this.route.snapshot.paramMap.get('movieId'), 10);
     this.getMovieInfo(this.movieId);
   }
   getMovieInfo(id: number) {
     this.movieInfoService.getMovieInfo(id).subscribe(movieDetails => {
       this.movie = movieDetails;
-      
-      let movieArray = [];
+
+      const movieArray = [];
       movieArray.push({
         id: movieDetails.id,
         genres: movieDetails.genres.map(x => x.name).join(', '),
         productionCountries: movieDetails.production_countries.map(x => x.name).join(', '),
         spokenLanguages: movieDetails.spoken_languages.map(x => x.name).join(', ')
-      })
+      });
       this.movieString = movieArray[0];
-    })
+    });
   }
 
 }
