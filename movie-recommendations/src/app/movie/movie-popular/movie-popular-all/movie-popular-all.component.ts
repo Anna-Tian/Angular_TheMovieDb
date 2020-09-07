@@ -8,6 +8,7 @@ import { UtilitiesService } from 'src/app/utilities.service';
 
 export interface FilterOptions {
   genre?: TagOption[];
+  language?: DropdownOption[];
 }
 
 @Component({
@@ -76,6 +77,13 @@ export class MoviePopularAllComponent implements OnInit {
   // Filter
   filterOptions: FilterOptions = {
     genre: [],
+    language: [
+      {
+        label: 'None Selected',
+        value: '',
+        isLeaf: true
+      }
+    ],
   };
 
   movieDiscover: MovieDiscover = {
@@ -86,18 +94,36 @@ export class MoviePopularAllComponent implements OnInit {
 
   ngOnInit() {
     this.getMovieList();
+    this.getFilterTags();
+  }
+  getFilterTags() {
     this.getFilterGenreTag();
+    this.getFilterLanguageOption();
+    console.log('getFilterTags: filterOptions', this.filterOptions);
   }
 
   private getFilterGenreTag() {
     this.utilitiesService.getMovieGenres().subscribe((results) => {
       for (const result of results) {
         const tags: TagOption = {
-          value: result.name,
-          id: result.id,
+          label: result.name,
+          valueNumber: result.id,
           checked: false
         };
         this.filterOptions.genre.push(tags);
+      }
+    });
+  }
+
+  getFilterLanguageOption() {
+    this.utilitiesService.getMovieLanguages().subscribe((results) => {
+      for (const result of results) {
+        const option: DropdownOption = {
+          label: result.english_name,
+          value: result.iso_639_1,
+          isLeaf: true
+        };
+        this.filterOptions.language.push(option);
       }
     });
   }
@@ -109,19 +135,29 @@ export class MoviePopularAllComponent implements OnInit {
     });
     this.movieService.getPopularMovieList(this.movieDiscover).subscribe((results) => {
       this.movies = results;
+      const languages = this.movies.map(movie => movie.original_language);
+      var languageCount = {};
+      languages.forEach(x => {languageCount[x] = (languageCount[x] || 0) + 1; });
+      console.log('getMovieList: languageCount', languageCount);
     });
     this.movieService.getMovieDiscoverString();
   }
 
-  handleChangeGenre(itemChecked: boolean, tag: TagOption): void {
-    this.filterOptions.genre = this.filterOptions.genre.map(option => (option.value === tag.value) ? Object.assign({}, option, {checked: itemChecked}) : option);
-    this.movieDiscover.with_genres = `&with_genres=${this.filterOptions.genre.filter(option => option.checked).map(option => option.id)}`;
+  handleChangesSort(event) {
+    this.movieDiscover.sort_by = `${event}`;
     this.getMovieList();
   }
 
-  onChangesSort(event) {
-    this.movieDiscover.sort_by = `${event}`;
+  handleChangeGenre(itemChecked: boolean, tag: TagOption): void {
+    this.filterOptions.genre = this.filterOptions.genre.map(option => (option.label === tag.label) ? Object.assign({}, option, {checked: itemChecked}) : option);
+    this.movieDiscover.with_genres = `&with_genres=${this.filterOptions.genre.filter(option => option.checked).map(option => option.valueNumber)}`;
     this.getMovieList();
+  }
+
+  handleChangesLanguage(event: string[]) {
+    this.movieDiscover.with_original_language = `&with_original_language=${event.toString()}`;
+    this.getMovieList();
+    console.log('handleChangesLanguage: event', event);
   }
 
   // Pagination

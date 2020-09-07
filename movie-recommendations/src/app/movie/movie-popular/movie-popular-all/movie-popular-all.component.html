@@ -2,32 +2,35 @@
   <h2>Popular Movies</h2>
   <div class="wrapper">
     <div class="selectionContainer">
-      <nz-collapse nzAccordion>
+      <!-- <nz-collapse nzAccordion> -->
+      <nz-collapse>
         <nz-collapse-panel [nzHeader]="'Sort'" [nzActive]="true">
           <div class="panelContent">
             <h6>Sort Results By</h6>
-            <nz-cascader [nzOptions]="sortOption" [ngModel]="'Popularity Descending'" (ngModelChange)="onChangesSort($event)"> </nz-cascader>
+            <nz-cascader [nzOptions]="sortOption" [ngModel]="'Popularity Descending'" (ngModelChange)="handleChangesSort($event)"> </nz-cascader>
           </div>
         </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Filters'" [nzActive]="false">
-          <div class="panelContent">
+        <!-- <nz-collapse-panel [nzHeader]="'Filters'" [nzActive]="false"> -->
+        <nz-collapse-panel [nzHeader]="'Filters'" [nzActive]="true">
+          <div class="panelContent release_date">
             <h6>Release Dates</h6>
           </div>
-          <div class="panelContent">
+          <div class="panelContent genres">
             <h6>Genres</h6>
             <nz-tag *ngFor="let tag of filterOptions.genre" nzMode="checkable" 
               [nzChecked]="tag.checked" 
               (nzCheckedChange)="handleChangeGenre($event, tag)">
-            {{ tag.value }}
+            {{ tag.label }}
             </nz-tag>
           </div>
-          <div class="panelContent">
+          <div class="panelContent language">
             <h6>Language</h6>
+            <nz-cascader [nzOptions]="filterOptions.language" [ngModel]="'None Selected'" (ngModelChange)="handleChangesLanguage($event)"> </nz-cascader>
           </div>
-          <div class="panelContent">
+          <div class="panelContent user_score">
             <h6>User Score</h6>
           </div>
-          <div class="panelContent">
+          <div class="panelContent min_user_votes">
             <h6>Minimum User Votes</h6>
           </div>
         </nz-collapse-panel>

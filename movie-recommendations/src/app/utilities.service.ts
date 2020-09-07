@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Genres } from './utilities';
+import { Genres, Languages } from './utilities';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -17,5 +17,9 @@ export class UtilitiesService {
       subject.next(item.genres);
     });
     return subject.asObservable();
+  }
+
+  getMovieLanguages() {
+    return this.http.get<Languages[]>(`https://api.themoviedb.org/3/configuration/languages?api_key=${this.apiKey}`);
   }
 }
