@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../movie.service';
 import { Router } from '@angular/router';
 import { MovieResult, MovieDiscover } from '../../movie';
-import { DropdownOption } from 'src/app/utilities';
+import { DropdownOption, FilterOption as TagOption } from 'src/app/utilities';
+import { UtilitiesService } from 'src/app/utilities.service';
+// tslint:disable: max-line-length
+
+export interface FilterOptions {
+  genre?: TagOption[];
+}
 
 @Component({
   selector: 'app-movie-popular-all',
@@ -13,6 +19,7 @@ export class MoviePopularAllComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
+    private utilitiesService: UtilitiesService,
     private router: Router
     ) { }
   movies: MovieResult[];
@@ -22,7 +29,7 @@ export class MoviePopularAllComponent implements OnInit {
     totalItems: 0
   };
 
-  // sort
+  // Sort
   sortOption: DropdownOption[] = [
     {
       value: '&sort_by=popularity.desc',
@@ -65,14 +72,34 @@ export class MoviePopularAllComponent implements OnInit {
       isLeaf: true
     }
   ];
+
+  // Filter
+  filterOptions: FilterOptions = {
+    genre: [],
+  };
+
   movieDiscover: MovieDiscover = {
     page: `&page=1`,
-    sort_by: `&sort_by=popularity.desc`
+    sort_by: `&sort_by=popularity.desc`,
   };
   voteRateFormat = (percent: number) => percent / 10;
 
   ngOnInit() {
     this.getMovieList();
+    this.getFilterGenreTag();
+  }
+
+  private getFilterGenreTag() {
+    this.utilitiesService.getMovieGenres().subscribe((results) => {
+      for (const result of results) {
+        const tags: TagOption = {
+          value: result.name,
+          id: result.id,
+          checked: false
+        };
+        this.filterOptions.genre.push(tags);
+      }
+    });
   }
 
   getMovieList(): void {
@@ -86,16 +113,19 @@ export class MoviePopularAllComponent implements OnInit {
     this.movieService.getMovieDiscoverString();
   }
 
+  handleChangeGenre(itemChecked: boolean, tag: TagOption): void {
+    this.filterOptions.genre = this.filterOptions.genre.map(option => (option.value === tag.value) ? Object.assign({}, option, {checked: itemChecked}) : option);
+    this.movieDiscover.with_genres = `&with_genres=${this.filterOptions.genre.filter(option => option.checked).map(option => option.id)}`;
+    this.getMovieList();
+  }
 
   onChangesSort(event) {
-    console.log('*** event: ', event);
-    this.movieDiscover.sort_by = `&sort_by=${event}`;
+    this.movieDiscover.sort_by = `${event}`;
     this.getMovieList();
   }
 
   // Pagination
   onPageIndexChange(event) {
-    console.log('*** event: ', event);
     this.movieDiscover.page = `&page=${event}`;
     this.getMovieList();
   }
