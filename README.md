@@ -6,3 +6,4 @@
 - Run `npm install`
 - Run `ng serve -o`
 
+Video presentation [here](https://youtu.be/sUAAbmBrtY4)
